@@ -1,0 +1,12 @@
+.page-link{
+    cursor: pointer;
+    transition: background-color .5s;
+}
+
+.page-link:hover{
+    background-color: white !important;
+}
+
+.active{
+    background-color: white !important;
+}

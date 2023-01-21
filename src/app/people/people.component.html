@@ -1,0 +1,55 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#0d6efd" type = "ball-clip-rotate-multiple" [fullScreen] = "true"></ngx-spinner>
+<div class="container py-5">
+    <div class="w-75 m-auto pt-5">
+        <form [formGroup]="searchForm" class="form-floating my-3">
+            <input (keyup)="search(searchForm)" formControlName="term" type="text" class="form-control bg-transparent text-primary border-primary" id="floatingInput" placeholder="Search">
+            <label class="text-primary" for="floatingInput">Search</label>
+          </form>
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a (click)="getLastPage('first')" class="page-link text-primary bg-transparent border-primary" aria-label="Previous">
+                        <span aria-hidden="true">First</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a (click)="changePage('prev')" class="page-link text-primary bg-transparent border-primary" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li (click)="getCurrentPage(page)" *ngFor="let page of visablePages" class="page-item"><a [ngClass]="{'active': currentPage==page}" class="page-link text-primary bg-transparent border-primary">{{page}}</a></li>
+                <li class="page-item">
+                    <a (click)="changePage('next')" class="page-link text-primary bg-transparent border-primary" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a (click)="getLastPage('last')" class="page-link text-primary bg-transparent border-primary" aria-label="Next">
+                        <span aria-hidden="true">Last</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="row pt-5">
+
+        <div class="d-flex align-items-center justify-content-center my-5" *ngIf="(trendingPeople|search:terms).length==0">
+            <h2>
+                NO Match
+            </h2>
+        </div>
+
+        <div *ngFor="let people of trendingPeople|search:terms" class="col-md-2">
+            <div class="movies position-relative">
+                <a [routerLink]="['/moviedetails',people.id,people.media_type]"><img class="img-fluid"
+                        [src]="imgPrefx+people.poster_path" [alt]="people.title"></a>
+                <h2 class="h6 my-3">{{people.name?people.name:people.title}}</h2>
+                <div class="vote text-primary fw-bolder position-absolute top-0 end-0 p-2">
+                    {{people.vote_average}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

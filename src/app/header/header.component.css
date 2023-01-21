@@ -1,0 +1,11 @@
+
+header{
+    background-image: url(../../assets/img/title-image-1.eb5e2899315f131fed94.webp);
+    background-position: center center;
+    background-size: cover;
+}
+
+.vote{
+    background-color: #131722d3;
+    border-bottom-left-radius: 4px;
+}

@@ -1,0 +1,115 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#0d6efd" type = "ball-clip-rotate-multiple" [fullScreen] = "true"></ngx-spinner>
+<app-header [headerTrendingMovies]="trendingMovies"></app-header>
+<div class="container">
+    <div class="w-75 m-auto pt-5">
+        <form [formGroup]="searchForm" class="form-floating my-3">
+            <input (keyup)="search(searchForm)" formControlName="term" type="text" class="form-control bg-transparent text-primary border-primary" id="floatingInput" placeholder="Search">
+            <label class="text-primary" for="floatingInput">Search</label>
+          </form>
+    </div>
+    <div class="row pt-5">
+        
+        <div class="col-md-4 d-flex align-items-center">
+            <div>
+                <div class="border1"></div>
+                <div class="my-5">
+                    <h2 class="text-primary">
+                        Trending Movies To Watch Right Now
+                    </h2>
+                    <p class="my-0 text-muted">
+                        Most watched movies by dayes
+                    </p>
+                </div>
+                <div class="border2"></div>
+            </div>
+        </div>
+
+        <div class="col-md-8 d-flex align-items-center justify-content-center my-5 text-primary" *ngIf="(trendingMovies|search:terms).length==0">
+            <h2>
+                NO Match
+            </h2>
+        </div>
+        
+        
+        <div *ngFor="let movie of trendingMovies|search:terms" class="col-md-2">
+            <div class="movies position-relative">
+                <a [routerLink]="['/moviedetails',movie.id,movie.media_type]"><img class="img-fluid"
+                        [src]="imgPrefx+movie.poster_path" [alt]="movie.title"></a>
+                <h2 class="h6 my-3">{{movie.title}}</h2>
+                <div class="vote text-primary fw-bolder position-absolute top-0 end-0 p-2">
+                    {{movie.vote_average}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pt-5">
+
+        <div class="col-md-4 d-flex align-items-center">
+            <div>
+                <div class="border1"></div>
+                <div class="my-5">
+                    <h2 class="text-primary">
+                        Trending People To Watch Right Now
+                    </h2>
+                    <p class="my-0 text-muted">
+                        Most watched People by dayes
+                    </p>
+                </div>
+                <div class="border2"></div>
+            </div>
+        </div>
+
+        <div class="col-md-8 d-flex align-items-center justify-content-center my-5 text-primary" *ngIf="(trendingPeople|search:terms).length==0">
+            <h2>
+                NO Match
+            </h2>
+        </div>
+
+        <div *ngFor="let people of trendingPeople|search:terms" class="col-md-2">
+            <div class="movies position-relative">
+                <a [routerLink]="['/moviedetails',people.id,people.media_type]"><img class="img-fluid"
+                        [src]="imgPrefx+people.poster_path" [alt]="people.title"></a>
+                <h2 class="h6 my-3">{{people.name?people.name:people.title}}</h2>
+                <div class="vote text-primary fw-bolder position-absolute top-0 end-0 p-2">
+                    {{people.vote_average}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row py-5">
+
+        <div class="col-md-4 d-flex align-items-center">
+            <div>
+                <div class="border1"></div>
+                <div class="my-5">
+                    <h2 class="text-primary">
+                        Trending TV To Watch Right Now
+                    </h2>
+                    <p class="my-0 text-muted">
+                        Most watched TV by dayes
+                    </p>
+                </div>
+                <div class="border2"></div>
+            </div>
+        </div>
+
+        <div class="col-md-8 d-flex align-items-center justify-content-center my-5 text-primary" *ngIf="(trendingTv|search:terms).length==0">
+            <h2>
+                NO Match
+            </h2>
+        </div>
+
+        <div *ngFor="let tv of trendingTv|search:terms" class="col-md-2">
+            <div class="movies position-relative">
+                <a [routerLink]="['/moviedetails',tv.id,tv.media_type]"><img class="img-fluid"
+                        [src]="imgPrefx+tv.poster_path" [alt]="tv.title"></a>
+                <h2 class="h6 my-3">{{tv.name}}</h2>
+                <div class="vote text-primary fw-bolder position-absolute top-0 end-0 p-2">
+                    {{tv.vote_average}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

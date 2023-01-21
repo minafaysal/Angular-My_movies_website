@@ -1,0 +1,40 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#0d6efd" type = "ball-clip-rotate-multiple" [fullScreen] = "true"></ngx-spinner>
+
+<div class="w-75 mx-auto py-5">
+    <div class="py-5">
+        <h2 class="my-4 text-primary">Login Now</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm(loginForm)">
+
+
+            <div class="my-3">
+                <div class="form-floating mb-3">
+                    <input [ngClass]="{'is-valid': loginForm.get('email')?.errors==null}" type="email"
+                        formControlName="email" class="form-control text-primary bg-transparent border-primary"
+                        id="email" placeholder="lastName">
+                    <label class="text-primary" for="email">Email</label>
+                </div>
+                <div *ngIf="loginForm.get('email')?.errors!=null && loginForm.get('email')?.touched"
+                    class="alert alert-danger mt-2 bg-transparent border-danger">
+                    <p *ngIf="loginForm.get('email')?.errors?.required">Email is required</p>
+                    <p *ngIf="loginForm.get('email')?.errors?.email">Invalid email</p>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <div class="form-floating mb-3">
+                    <input [ngClass]="{'is-valid': loginForm.get('password')?.errors==null}" type="password"
+                        formControlName="password" class="form-control text-primary bg-transparent border-primary"
+                        id="password" placeholder="lastName">
+                    <label class="text-primary" for="password">Password</label>
+                </div>
+                <div *ngIf="loginForm.get('password')?.errors!=null && loginForm.get('password')?.touched"
+                    class="alert alert-danger mt-2 bg-transparent border-danger">
+                    <p *ngIf="loginForm.get('password')?.errors?.required">Password is required</p>
+                    <p *ngIf="loginForm.get('password')?.errors?.pattern">Invalid password</p>
+                </div>
+            </div>
+
+            <button [disabled]="loginForm.invalid" routerLink="home" type="submit" class="btn btn-outline-primary mt-2">Login</button>
+        </form>
+    </div>
+</div>

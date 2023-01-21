@@ -1,0 +1,87 @@
+<div class="w-75 mx-auto py-5">
+    <div class="py-5">
+        <h2 class="my-4 text-primary">Contact US</h2>
+
+        <form [formGroup]="contactForm" (ngSubmit)="submitContactForm(contactForm)">
+            <div class="my-3">
+                <div class="form-floating mb-3">
+                    <input [ngClass]="{'is-valid': contactForm.get('first_name')?.errors==null}" type="text"
+                        formControlName="first_name" class="form-control text-primary bg-transparent border-primary"
+                        id="first_name" placeholder="FirstName">
+                    <label class="text-primary" for="first_name">First Name</label>
+                </div>
+                <div *ngIf="contactForm.get('first_name')?.errors!=null && contactForm.get('first_name')?.touched"
+                    class="alert alert-danger mt-2 fw-bolder bg-transparent border-danger">
+                    <p *ngIf="contactForm.get('first_name')?.errors?.required">first_name is required</p>
+                    <p *ngIf="contactForm.get('first_name')?.errors?.minlength">first_name minlength is 3</p>
+                    <p *ngIf="contactForm.get('first_name')?.errors?.maxlength">first_name maxlength is 8</p>
+                    <p *ngIf="contactForm.get('first_name')?.errors?.pattern">Letters only available</p>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <div class="form-floating mb-3">
+                    <input [ngClass]="{'is-valid': contactForm.get('last_name')?.errors==null}" type="text"
+                        formControlName="last_name" class="form-control text-primary bg-transparent border-primary"
+                        id="last_name" placeholder="lastName">
+                    <label class="text-primary" for="last_name">Last Name</label>
+                </div>
+                <div *ngIf="contactForm.get('last_name')?.errors!=null && contactForm.get('last_name')?.touched"
+                    class="alert alert-danger mt-2 fw-bolder bg-transparent border-danger">
+                    <p *ngIf="contactForm.get('last_name')?.errors?.required">last_name is required</p>
+                    <p *ngIf="contactForm.get('last_name')?.errors?.minlength">last_name minlength is 3</p>
+                    <p *ngIf="contactForm.get('last_name')?.errors?.maxlength">last_name maxlength is 8</p>
+                    <p *ngIf="contactForm.get('last_name')?.errors?.pattern">Letters only available</p>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <div class="form-floating mb-3">
+                    <input [ngClass]="{'is-valid': contactForm.get('age')?.errors==null}" type="number"
+                        formControlName="age" class="form-control text-primary bg-transparent border-primary"
+                        id="age" placeholder="lastName">
+                    <label class="text-primary" for="age">Age</label>
+                </div>
+                <div *ngIf="contactForm.get('age')?.errors!=null && contactForm.get('age')?.touched"
+                    class="alert alert-danger mt-2 fw-bolder bg-transparent border-danger">
+                    <p *ngIf="contactForm.get('age')?.errors?.required">age is required</p>
+                    <p *ngIf="contactForm.get('age')?.errors?.min">age min is 16</p>
+                    <p *ngIf="contactForm.get('age')?.errors?.max">age max is 80</p>
+                    <p *ngIf="contactForm.get('age')?.errors?.pattern">Digits only available</p>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <div class="form-floating mb-3">
+                    <input [ngClass]="{'is-valid': contactForm.get('email')?.errors==null}" type="email"
+                        formControlName="email" class="form-control text-primary bg-transparent border-primary"
+                        id="email" placeholder="lastName">
+                    <label class="text-primary" for="email">Email</label>
+                </div>
+                <div *ngIf="contactForm.get('email')?.errors!=null && contactForm.get('email')?.touched"
+                    class="alert alert-danger mt-2 fw-bolder bg-transparent border-danger">
+                    <p *ngIf="contactForm.get('email')?.errors?.required">email is required</p>
+                    <p *ngIf="contactForm.get('email')?.errors?.email">invalid email</p>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <div class="form-floating mb-3">
+                    <textarea [ngClass]="{'is-valid': contactForm.get('comment')?.errors==null}" type="text"
+                    formControlName="comment" class="form-control text-primary bg-transparent border-primary"
+                    id="comment" placeholder="lastName"></textarea>
+                    <label class="text-primary" for="comment">Comment</label>
+                </div>
+                <div *ngIf="contactForm.get('comment')?.errors!=null && contactForm.get('comment')?.touched"
+                    class="alert alert-danger mt-2 fw-bolder bg-transparent border-danger">
+                    <p *ngIf="contactForm.get('comment')?.errors?.required">comment is required</p>
+                    <p *ngIf="contactForm.get('comment')?.errors?.minlength">comment minlength is 10</p>
+                    <p *ngIf="contactForm.get('comment')?.errors?.maxlength">comment maxlength is 100</p>
+                    <p *ngIf="contactForm.get('comment')?.errors?.pattern">Letters & Digits only available</p>
+                </div>
+            </div>
+            <button [disabled]="contactForm.invalid" type="submit"
+                class="btn btn-outline-primary mt-2">Send</button>
+        </form>
+    </div>
+</div>

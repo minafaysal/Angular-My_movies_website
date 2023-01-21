@@ -1,0 +1,56 @@
+.navbar{
+    background-color: #131722c9;
+}
+.dropdown-menu{
+    background-color: #131722d3;
+}
+
+.dropdown-item{
+    transition: color .5s;
+}
+
+.dropdown-item:focus, .dropdown-item:hover{
+    background-color: transparent;
+    color: #0d6efd !important;
+}
+
+.fa-bars{
+    transition: color .5s;
+}
+
+.fa-bars:hover{
+    color: #0d6efd !important;
+}
+
+.logo{
+    width: 40px;
+}
+
+.active{
+    color: #0d6efd !important;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.nav-link{
+    font-weight: 700;
+    border-radius: 4px;
+    transition: background-color .5s , color .5s;
+}
+
+.nav-link:hover{
+    color: #0d6efd !important;
+    font-weight: 700;
+}
+
+.fa-user{
+    transition: color .5s;
+}
+
+.fa-user:hover{
+    color: #0d6efd;
+}
+
+.form-control::placeholder{
+    color: #0d6efd;
+}

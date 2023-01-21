@@ -1,0 +1,20 @@
+<header class="vh-100 d-flex align-items-end">
+    <div class="container">
+        <h1 class="h4 fw-bolder my-3">Top trending movies</h1>
+    <owl-carousel-o [options]="customOptions">
+
+        
+            <ng-container *ngFor="let movie of headerTrendingMovies">
+                <ng-template carouselSlide [id]="movie.id">
+                    <a [routerLink]="['/moviedetails',movie.id,movie.media_type]"><img class="img-fluid"
+                        [src]="imgPrefx+movie.poster_path" [alt]="movie.title"></a>
+                        <div class="vote text-primary fw-bolder position-absolute top-0 end-0 p-2">
+                            {{movie.vote_average}}
+                        </div>
+                </ng-template>
+            </ng-container>
+        
+
+    </owl-carousel-o>
+</div>
+</header>

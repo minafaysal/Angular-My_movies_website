@@ -1,0 +1,31 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#0d6efd" type = "ball-clip-rotate-multiple" [fullScreen] = "true"></ngx-spinner>
+
+<div class="container pt-5">
+<div class="row pt-5">
+    <div class="col-md-4 mb-3">
+        <img class="img-fluid" [src]="imgPrefx+movieDetailes.poster_path" alt="">
+    </div>
+    <div class="col-md-8">
+        <h1 class="mb-2 fw-bolder text-primary">{{movieDetailes.original_title?movieDetailes.original_title:movieDetailes.name}}</h1>
+        <p class="my-4">{{movieDetailes.overview}}</p>
+        <p class="my-4"><span
+            class="type p-2 me-2 bg-primary" *ngFor="let gener of movieDetailes.genres"> {{gener.name}} </span></p>
+        <p class="my-4"><span class="me-2 text-primary">Rate </span> {{movieDetailes.vote_average}}</p>
+        <p class="my-4"><span class="me-2 text-primary">Rate count </span> {{movieDetailes.vote_count}}</p>
+        <p class="my-4"><span class="me-2 text-primary">Release date </span> {{movieDetailes.first_air_date}}{{movieDetailes.release_date}}</p>
+        <div class="d-flex my-4" *ngIf="movieDetailes.networks">
+            <div *ngFor="let network of movieDetailes.networks">
+                <img *ngIf="network.logo_path" class="logo me-3" [src]="imgPrefx+network.logo_path" alt="">
+            </div>
+
+        </div>
+        <div class="d-flex my-3" *ngIf="movieDetailes.production_companies">
+            <div *ngFor="let logo of movieDetailes.production_companies">
+                <img *ngIf="logo.logo_path" class="logo me-3" [src]="imgPrefx+logo.logo_path" alt="">
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
